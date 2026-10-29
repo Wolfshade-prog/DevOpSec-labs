@@ -1,12 +1,30 @@
-Creating an account and learning on the go,
-I love how i can do all this from CLI
+# Lab 0: Secure AWS account setup
 
-noting i would have never thought of any of this kind of things if it wasnt for curiosity and being an introvert.
+> My DevOps arc starts here. Curiosity got me this far.
 
-Creating this account was easy enough, hard to navigate if you are new to computers but MFA and account settins is
-quite standard these days, under the username dropdowns.
- MFA was harder to activate for some reason, once the QR code was scanned and the codes entered, it hung for awhile
-i didnt know what to do so some research indicated that AWS has some issues so i had to sign out and back in 
+## What I built
+- New AWS account on the Free plan
+- MFA on the root user, then a separate `wolfshade-admin` IAM user (also with MFA) for daily work. Root stays locked 
+in the drawer.
+- Two budgets: a zero-spend alert and a $10 monthly cap
+- AWS CLI v2 on my home server (berserkernode), region eu-west-1
 
-this cleared the cache and i was able to MFA true.
-passphrase was added as well for extra laziness. 
+## Commands I used
+    aws --version
+    aws configure
+    aws sts get-caller-identity   # the "whoami" of AWS
+
+## What broke and how I fixed it
+After scanning the QR code and entering the codes, MFA setup hung. I refreshed, tried again, and got 
+"You need permissions... authenticate with an MFA device."
+
+**Root cause:** the first attempt had actually succeeded. MFA was active, but my session started before MFA existed, 
+so AWS blocked MFA changes from it.
+
+**Fix:** signed out and back in with an MFA code. Confirmed one device under Security credentials and removed the 
+duplicate from my authenticator app.
+
+**Lesson:** when a change looks like it failed, check whether it went through before retrying.
+
+## Screenshots
+![Budgets](budgets.png)
