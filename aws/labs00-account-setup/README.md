@@ -27,6 +27,5 @@ duplicate from my authenticator app.
 **Lesson:** when a change looks like it failed, check whether it went through before retrying.
 
 ## Screenshots
-![Budgets](<img width="1622" height="262" alt="image" src="https://github.com/user-attachments/assets/d97774ed-cef3-4785-8e79-41c7fee93033" />
-)
-![Aws sts get-caller-identity](<img width="713" height="137" alt="AwsGetCallerId" src="https://github.com/user-attachments/assets/8d643084-b5c1-47c1-b7f0-31c2984327dd" />)
+<img width="1622" height="262" alt="image" src="https://github.com/user-attachments/assets/d97774ed-cef3-4785-8e79-41c7fee93033" />
+<img width="713" height="137" alt="AwsGetCallerId" src="https://github.com/user-attachments/assets/8d643084-b5c1-47c1-b7f0-31c2984327dd" />
