@@ -36,7 +36,7 @@ aws configure set region eu-north-1
 | 1 | `scp ... darkwolf@<home-server>` | "1 file(s) copied", but no file on the server | No `:` after the host, so scp did a **local** copy on Windows | Added `:~/` to the destination, then deleted the stray local copy |
 | 2 | `chmod 700 ssh` | No error, but wrong target | `~/ssh` is a stray empty file; the real folder is the hidden `~/.ssh` | `chmod 700 ~/.ssh` |
 | 3 | `ssh ... ec2-darkwolf@<home-server>` | `Connection refused` | Connected to my **own** server on port 22 (mine listens on a custom port). Wrong host and wrong user | Used the EC2 public IP and the default user `ec2-user` |
-| 4 | `ssh -i -p 22666 ~/.ssh/wolf-key.pem ...` | `Identity file -p not accessible` | `-i` takes the **next word** as the key file | Keep options paired: `-i <key> -p <port>` |
+| 4 | `ssh -i -p <port> ~/.ssh/wolf-key.pem ...` | `Identity file -p not accessible` | `-i` takes the **next word** as the key file | Keep options paired: `-i <key> -p <port>` |
 | 5 | `ssh ... ec2-user@<EC2-IP>` | `Connection timed out` | The security group only allowed my **work** IP, saved when I chose "My IP" in the browser at work | Added an inbound SSH rule for my home IP `/32` |
 | 6 | `aws ec2 describe-instances` (planned) | Would have returned nothing | The instance is in eu-north-1, but my CLI defaulted to eu-west-1 | `aws configure set region eu-north-1` |
 
